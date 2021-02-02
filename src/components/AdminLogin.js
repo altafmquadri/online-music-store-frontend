@@ -23,9 +23,8 @@ class AdminLogin extends Component {
             body: JSON.stringify(this.state)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => this.props.setStorageAdmin(data, this.state.username))
     }
-    
     
     render() { 
         const {username, password} = this.state
