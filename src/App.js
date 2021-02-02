@@ -4,14 +4,15 @@ import AdminLogin from './components/AdminLogin.js'
 import {Switch, Route, withRouter} from 'react-router-dom'
 import Songs from './components/Songs';
 import EditSong from './components/EditSong';
+import CreateSongForm from './components/CreateSongForm';
 
 class App extends Component {
   
   state = {
     admin: {
       username:""
-
     },
+    
     user:""
   }
   
@@ -19,7 +20,6 @@ class App extends Component {
        if (data) {
         localStorage.setItem("isLoggedIn", data)
         this.setUserName(username)
-
        } else {
          alert("Invalid Credentials")
        }
@@ -40,7 +40,8 @@ class App extends Component {
         <Switch>
           <Route exact path={"/"} render={(routerProps) => <AdminLogin setStorageAdmin={this.setStorageAdmin} {...routerProps}/>}/>
           <Route exact path={"/songs"} render={(routerProps) => <Songs {...routerProps}/>}/>          
-          <Route exact path={"/edit/songs/:id"} component={EditSong}/>          
+          <Route exact path={"/edit/songs/:id"} component={EditSong}/> 
+          <Route exact path={"/addsong"} component={CreateSongForm}/>  
         </Switch>
       </div>
 

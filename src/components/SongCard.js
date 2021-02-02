@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, ListGroupItem, ListGroup } from 'react-bootstrap';
+import { Card, ListGroupItem, ListGroup,Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 
 
@@ -7,7 +7,6 @@ export default class SongCard extends Component {
     render() {
         return (
             <div style={{margin: "10px"}}>
-
                 <Card className="mb-3" style={{ width: '18rem'}}>
                     <Card.Img variant="top" style={{ height: "200px", width: "287px" }} src={this.props.song.imageUrl} />
                     <Card.Body>
@@ -24,7 +23,7 @@ export default class SongCard extends Component {
                     </ListGroup>
                     <Card.Body>                         
                         <Link className="btn btn-success"  to={`/edit/songs/${this.props.song.id}`}>Edit</Link>
-                        <Card.Link className="btn btn-danger" href="#">Delete</Card.Link>
+                        <Button onClick={()=> this.props.deleteSong(this.props.song.id)} className="btn btn-danger">Delete</Button>
                     </Card.Body>
                 </Card>
 

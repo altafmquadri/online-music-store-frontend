@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Col, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const EDITSONGAPI = `http://localhost:8080/api/admin/edit/songs/`
+const ADDSONGAPI = `http://localhost:8080/api/admin/addsong`
 
-export default class EditSong extends Component {
+export default class CreateSongForm extends Component {
 
     state = {
         imageUrl: '',
@@ -23,7 +24,7 @@ export default class EditSong extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        fetch(EDITSONGAPI + this.props.match.params.id, {
+        fetch(ADDSONGAPI,{
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -37,19 +38,6 @@ export default class EditSong extends Component {
         })
     }
 
-    componentDidMount() {
-        fetch(EDITSONGAPI + this.props.match.params.id)
-            .then(res => res.json())
-            .then(song => {
-                const {imageUrl,title, description, artist, genre, format, price} = song
-                this.setState({
-                    imageUrl,title, description, artist, genre, format, price
-                })
-            })            
-    }
-
-    
-
     render() {
         const {imageUrl,title, description, artist, genre, format, price} = this.state
         return (
@@ -58,26 +46,26 @@ export default class EditSong extends Component {
                     <Form.Row >
                     <Col className="mb-2" >
                         <Form.Label className="float-start">Image</Form.Label>
-                            <Form.Control  name="imageUrl" value={imageUrl} onChange={this.onChange} />
+                            <Form.Control  required="required" name="imageUrl" value={imageUrl} onChange={this.onChange} />
                         </Col>
                         <Col className="mb-2" >
                         <Form.Label className="float-start">Title</Form.Label>
-                            <Form.Control name="title"  value={title}  onChange={this.onChange}/>
+                            <Form.Control required="required" name="title"  value={title}  onChange={this.onChange}/>
                         </Col>
                         <Col className="mb-2">
                         <Form.Label className="float-start">Description</Form.Label>
-                            <Form.Control  name="description" value={description}  onChange={this.onChange}/>
+                            <Form.Control  required="required" name="description" value={description}  onChange={this.onChange}/>
                         </Col>
                         <Col className="mb-2">
                         <Form.Label className="float-start">Artist</Form.Label>
-                            <Form.Control  name="artist" value={artist}  onChange={this.onChange}/>
+                            <Form.Control required="required"  name="artist" value={artist}  onChange={this.onChange}/>
                         </Col>
                         <Col className="mb-2">
                         <Form.Label className="float-start">Genre</Form.Label>
-                            <Form.Control  name="genre" value={genre} onChange={this.onChange} />
+                            <Form.Control  required="required" name="genre" value={genre} onChange={this.onChange} />
                         </Col>
                         <Form.Label className="float-start">Format</Form.Label>
-                        <Form.Control as="select" name="format" value={format} onChange={this.onChange}>
+                        <Form.Control  required="required"as="select" name="format" value={format} onChange={this.onChange}>
                             <option>{format}</option>
                             <option value="AIFF">AIFF</option>
                             <option value="MP3">MP3</option>
@@ -88,10 +76,11 @@ export default class EditSong extends Component {
                         </Form.Control>
                         <Col className="mb-2">
                         <Form.Label className="float-start">Price</Form.Label>
-                            <Form.Control name="price" value={price}  onChange={this.onChange}/>
+                            <Form.Control required="required" name="price" value={price}  onChange={this.onChange}/>
                         </Col>
                     </Form.Row>
-                    <Button type="submit" className="float-start mb-2">Save</Button>
+                    <Button  type="submit" className="float-start mb-2">Add Song</Button>
+                    <Link className="btn btn-danger float-start" to="/songs">Cancel</Link>
                 </Form>
             </div>
         )
