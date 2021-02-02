@@ -29,7 +29,9 @@ class AdminLogin extends Component {
     render() { 
         const {username, password} = this.state
 
-        return ( <div>
+        return ( 
+           
+        <div>
             <form onSubmit={this.onSubmit}>
                 <label>Username:</label>
                 <input type="text" name="username" value={username} onChange={this.onChange}/>  
@@ -38,6 +40,7 @@ class AdminLogin extends Component {
                 <input type="submit" value="Login"/>
             </form>
         </div> );
+        
     }
 }
  

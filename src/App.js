@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import AdminLogin from './components/AdminLogin.js'
-import Songs from './components/Songs'
 import {Switch, Route, withRouter} from 'react-router-dom'
-
+import Songs from './components/Songs';
+import EditSong from './components/EditSong';
 
 class App extends Component {
   
@@ -35,16 +35,15 @@ class App extends Component {
   render() {
 
     return (
+  
       <div className="App">
         <Switch>
           <Route exact path={"/"} render={(routerProps) => <AdminLogin setStorageAdmin={this.setStorageAdmin} {...routerProps}/>}/>
-          <Route exact path={"/songs"} render={(routerProps) => <Songs {...routerProps}/>}/>
-         
-
-          
-
+          <Route exact path={"/songs"} render={(routerProps) => <Songs {...routerProps}/>}/>          
+          <Route exact path={"/edit/songs/:id"} component={EditSong}/>          
         </Switch>
       </div>
+
     )
   }
 }

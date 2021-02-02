@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SongCard from './SongCard';
+import './Songs.css'
 
 const SONGSAPI = `http://localhost:8080/api/admin/songs`
 
@@ -10,17 +12,24 @@ class Songs extends Component {
     componentDidMount() {
         fetch(SONGSAPI)
             .then(res => res.json())
-            .then(data => this.setSongs(data))
+            .then(data =>  this.setSongs(data))
     }
 
     setSongs = (songs) => {
         this.setState({ 
-            songs: [...this.state.songs, songs]
+            songs
         });
     }
 
     render() { 
-        return ( <h1>Songs</h1> );
+        return ( 
+        <div className="songlist">
+            {this.state.songs.map(song => {
+                 return <SongCard key={song.id} song={song} />
+            })}
+        </div>
+        
+        );
     }
 }
  
