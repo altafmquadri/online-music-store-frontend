@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AdminLogin.css'
 
 const ADMINLOGINAPI = `http://localhost:8080/api/admin/login`
 
@@ -31,13 +32,13 @@ class AdminLogin extends Component {
 
         return ( 
            
-        <div>
-            <form onSubmit={this.onSubmit}>
+        <div className="loging-wrapper">
+            <form  onSubmit={this.onSubmit}>
                 <label>Username:</label>
-                <input type="text" name="username" value={username} onChange={this.onChange}/>  
+                <input className="form-control" type="text" name="username" value={username} onChange={this.onChange}/>  
                 <label>Password:</label>
-                <input type="password" name="password" value={password} onChange={this.onChange}/> 
-                <input type="submit" value="Login"/>
+                <input className="form-control" type="password" name="password" value={password} onChange={this.onChange}/> 
+                <input className="login_button" type="submit" value="Login"/>
             </form>
         </div> );
         

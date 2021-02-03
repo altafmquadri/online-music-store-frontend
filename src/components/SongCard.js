@@ -1,33 +1,31 @@
 import React, { Component } from 'react'
 import { Card, ListGroupItem, ListGroup,Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 export default class SongCard extends Component {
     render() {
         return (
             <div style={{margin: "10px"}}>
-                <Card className="mb-3" style={{ width: '18rem'}}>
-                    <Card.Img variant="top" style={{ height: "200px", width: "287px" }} src={this.props.song.imageUrl} />
+                <Card className="song_card" style={{ width: '18rem'}}>
+                    <Card.Img variant="top" style={{ height: "200px", width: "280px" }} src={this.props.song.imageUrl} />
                     <Card.Body>
-                        <Card.Title>{this.props.song.title}</Card.Title>
+                        <Card.Title><span style={{fontWeight: "bold"}}>Title:  </span>{this.props.song.title}</Card.Title>
                         <Card.Text>
-                            {this.props.song.description}
+                        <span style={{fontWeight: "bold"}}>Description:</span>{this.props.song.description}
                         </Card.Text>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
-                        <ListGroupItem> {this.props.song.artist}</ListGroupItem>
-                        <ListGroupItem>{this.props.song.genre}</ListGroupItem>
-                        <ListGroupItem>{this.props.song.format}</ListGroupItem>
-                        <ListGroupItem>{this.props.song.price}</ListGroupItem>
+                        <ListGroupItem><span style={{fontWeight: "bold"}}>Artist:</span> {this.props.song.artist}</ListGroupItem>
+                        <ListGroupItem><span style={{fontWeight: "bold"}}>Genre:</span>{this.props.song.genre}</ListGroupItem>
+                        <ListGroupItem><span style={{fontWeight: "bold"}}>Format:</span>{this.props.song.format}</ListGroupItem>
+                        <ListGroupItem><span style={{fontWeight: "bold"}}>Price:</span> ${this.props.song.price}</ListGroupItem>
                     </ListGroup>
                     <Card.Body>                         
-                        <Link className="btn btn-success"  to={`/edit/songs/${this.props.song.id}`}>Edit</Link>
-                        <Button onClick={()=> this.props.deleteSong(this.props.song.id)} className="btn btn-danger">Delete</Button>
+                    <NavLink to={`/edit/songs/${this.props.song.id}`}><Button className="edit_button" >Edit</Button></NavLink>
+                        <Button onClick={()=> this.props.deleteSong(this.props.song.id)} className="delete_button">Delete</Button>
                     </Card.Body>
                 </Card>
-
-
             </div>
         )
     }

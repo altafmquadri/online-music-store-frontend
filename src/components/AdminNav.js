@@ -5,13 +5,9 @@ import { Link } from 'react-router-dom'
 export default class AdminNav extends Component {
     render() {
         return (
-            <div>
-                <div>
-                <Link to="/songs">Home</Link>
-                </div>
-                <div>
-                <Link to="/addsong">Add Song</Link>
-                </div>
+            <div className="navbar">
+                <Link className="navbar-brand" style={{color: "white"}} to="/songs">Home</Link>
+                <Link className="navbar-brand" style={{color: "white"}} to="/addsong">Add Song</Link>
             </div>
         )
     }
