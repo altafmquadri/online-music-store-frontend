@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AdminLogin.css'
 
-const ADMINLOGINAPI = `http://localhost:8080/api/admin/login`
+const ADMINLOGINAPI = `http://localhost:8080/api/authenticate`
 
 class AdminLogin extends Component {
     state = { 
@@ -24,7 +24,7 @@ class AdminLogin extends Component {
             body: JSON.stringify(this.state)
         })
         .then(res => res.json())
-        .then(data => this.props.setStorageAdmin(data, this.state.username))
+        .then(data => this.props.setStorageAdmin(data.token, this.state.username))
     }
     
     render() { 

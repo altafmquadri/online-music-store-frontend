@@ -3,6 +3,7 @@ import SongCard from './SongCard';
 import './Songs.css'
 import AdminNav from './AdminNav'
 
+const BEARER = "Bearer " + localStorage.token
 const SONGSAPI = `http://localhost:8080/api/admin/songs`
 const DELETESONGAPI = `http://localhost:8080/api/admin/deletesong/`
 
@@ -12,7 +13,16 @@ class Songs extends Component {
     }
 
     componentDidMount() {
-        fetch(SONGSAPI)
+        console.log(BEARER);
+        fetch(SONGSAPI, {
+            method: "GET",
+            withCredentials: true,
+            credentials: 'include',
+            headers: {
+                'Authorization': "Bearer " + localStorage.token,
+                'Content-Type':'application/json'
+            }
+        })
             .then(res => res.json())
             .then(data => this.setSongs(data))
     }
