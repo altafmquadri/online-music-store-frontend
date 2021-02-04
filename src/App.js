@@ -42,7 +42,7 @@ class App extends Component {
           <Route exact path={"/edit/songs/:id"} component={EditSong}/> 
           <Route exact path={"/addsong"} component={CreateSongForm}/>  
         </Switch>
-        {this.state.token ? "" : <Redirect to={"/"}/>}
+        {/* {this.state.token ? "" : <Redirect to={"/"}/>} */}
         
       </div>
 

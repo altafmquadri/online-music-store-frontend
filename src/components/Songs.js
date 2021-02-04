@@ -16,10 +16,8 @@ class Songs extends Component {
         console.log(BEARER);
         fetch(SONGSAPI, {
             method: "GET",
-            withCredentials: true,
-            credentials: 'include',
             headers: {
-                'Authorization': "Bearer " + localStorage.token,
+                'Authorization': BEARER,
                 'Content-Type':'application/json'
             }
         })
