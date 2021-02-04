@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Col, Form } from 'react-bootstrap'
 import AdminNav from './AdminNav'
-import './Songs.css'
+import {API_URL} from './constants/API'
+import '../styles/Songs.css'
 
-const EDITSONGAPI = `http://localhost:8080/api/admin/edit/songs/`
+const BEARER = "Bearer " + localStorage.token
+const EDITSONGAPI = `${API_URL}/admin/edit/songs/`
 
 export default class EditSong extends Component {
 
@@ -30,6 +32,7 @@ export default class EditSong extends Component {
             headers: {
                 "Content-type": "application/json",
                 Accepts: "application/json",
+                'Authorization': BEARER,
             },
             body: JSON.stringify(this.state)
         })
@@ -40,7 +43,13 @@ export default class EditSong extends Component {
     }
 
     componentDidMount() {
-        fetch(EDITSONGAPI + this.props.match.params.id)
+        fetch(EDITSONGAPI + this.props.match.params.id, {
+            method: "GET",
+            headers: {
+                'Authorization': BEARER,
+                'Content-Type':'application/json'
+            }
+        })
             .then(res => res.json())
             .then(song => {
                 const { imageUrl, title, description, artist, genre, format, price } = song

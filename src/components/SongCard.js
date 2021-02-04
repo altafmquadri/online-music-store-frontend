@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Card, ListGroupItem, ListGroup,Button } from 'react-bootstrap';
 import {NavLink} from 'react-router-dom'
+import { Card, ListGroupItem, ListGroup,Button } from 'react-bootstrap';
 
 
 export default class SongCard extends Component {

@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import SongCard from './SongCard';
-import './Songs.css'
 import AdminNav from './AdminNav'
+import SongCard from './SongCard';
+import {API_URL} from './constants/API'
+import '../styles/Songs.css'
 
 const BEARER = "Bearer " + localStorage.token
-const SONGSAPI = `http://localhost:8080/api/admin/songs`
-const DELETESONGAPI = `http://localhost:8080/api/admin/deletesong/`
+const DELETESONGAPI = `${API_URL}/admin/deletesong/`
+const SONGSAPI = `${API_URL}/admin/songs`
 
 class Songs extends Component {
     state = {
         songs: []
     }
-
+    
     componentDidMount() {
-        console.log(BEARER);
         fetch(SONGSAPI, {
             method: "GET",
             headers: {
@@ -32,9 +32,12 @@ class Songs extends Component {
     }
 
     deleteSong = (id) => {
-        console.log(id)
         fetch(DELETESONGAPI + id , {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                'Authorization': BEARER,
+                'Content-Type':'application/json'
+            }
         })
         .then(res => res.json())
         .then(s => {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './AdminLogin.css'
+import {API_URL} from './constants/API'
+import '../styles/AdminLogin.css'
 
-const ADMINLOGINAPI = `http://localhost:8080/api/authenticate`
+const ADMINLOGINAPI = `${API_URL}/authenticate`
 
 class AdminLogin extends Component {
     state = { 

@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { Button, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AdminNav from './AdminNav'
-import './Songs.css'
+import {API_URL} from './constants/API'
+import '../styles/Songs.css'
 
-const ADDSONGAPI = `http://localhost:8080/api/admin/addsong`
+const BEARER = "Bearer " + localStorage.token
+const ADDSONGAPI = `${API_URL}/admin/addsong`
 
 export default class CreateSongForm extends Component {
 
@@ -31,6 +33,7 @@ export default class CreateSongForm extends Component {
             headers: {
                 "Content-type": "application/json",
                 Accepts: "application/json",
+                'Authorization': BEARER
             },
             body: JSON.stringify(this.state)
         })
