@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AdminNav from './AdminNav'
 import SongCard from './SongCard';
 import {API_URL} from './constants/API'
 import '../styles/Songs.css'
