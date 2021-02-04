@@ -102,7 +102,8 @@ box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5p
     /* position: relative; */
     /* top: 0px; */
     padding: 15px;
- 
+    height: 80px;
+    max-height: 80px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -112,6 +113,8 @@ box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5p
     color: rgb(10, 10, 10);
  
 }
+
+
 
 
 .addsong-button {

@@ -51,7 +51,7 @@ class Songs extends Component {
     render() {
         return (
             <div>
-                <AdminNav />
+                
                 <div className="songlist">
                     {this.state.songs.map(song => {
                         return <SongCard key={song.id} song={song} deleteSong={this.deleteSong}/>

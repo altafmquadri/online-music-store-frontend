@@ -65,9 +65,6 @@ export default class EditSong extends Component {
         const { imageUrl, title, description, artist, genre, format, price } = this.state
         return (
             <div>
-                <div>
-                    <AdminNav />
-                </div>
                 <div className="input-group" style={{ marginTop: "30px" }}>
                     <Form className="form-control" onSubmit={this.onSubmit}>
                         <Form.Row >
