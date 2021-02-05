@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import {API_URL} from './constants/API'
 import '../styles/Songs.css'
 
-const BEARER = "Bearer " + localStorage.token
 const ADDSONGAPI = `${API_URL}/admin/addsong`
 
 export default class CreateSongForm extends Component {
@@ -32,7 +31,7 @@ export default class CreateSongForm extends Component {
             headers: {
                 "Content-type": "application/json",
                 Accepts: "application/json",
-                'Authorization': BEARER
+                'Authorization': "Bearer " + localStorage.token,
             },
             body: JSON.stringify(this.state)
         })

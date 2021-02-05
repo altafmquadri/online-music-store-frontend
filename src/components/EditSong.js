@@ -3,7 +3,6 @@ import { Button, Col, Form } from 'react-bootstrap'
 import {API_URL} from './constants/API'
 import '../styles/Songs.css'
 
-const BEARER = "Bearer " + localStorage.token
 const EDITSONGAPI = `${API_URL}/admin/edit/songs/`
 
 export default class EditSong extends Component {
@@ -31,7 +30,7 @@ export default class EditSong extends Component {
             headers: {
                 "Content-type": "application/json",
                 Accepts: "application/json",
-                'Authorization': BEARER,
+                'Authorization': "Bearer " + localStorage.token,
             },
             body: JSON.stringify(this.state)
         })
@@ -45,7 +44,7 @@ export default class EditSong extends Component {
         fetch(EDITSONGAPI + this.props.match.params.id, {
             method: "GET",
             headers: {
-                'Authorization': BEARER,
+                'Authorization': "Bearer " + localStorage.token,
                 'Content-Type':'application/json'
             }
         })

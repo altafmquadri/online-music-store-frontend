@@ -3,7 +3,6 @@ import SongCard from './SongCard';
 import {API_URL} from './constants/API'
 import '../styles/Songs.css'
 
-const BEARER = "Bearer " + localStorage.token
 const DELETESONGAPI = `${API_URL}/admin/deletesong/`
 const SONGSAPI = `${API_URL}/admin/songs`
 
@@ -12,11 +11,11 @@ class Songs extends Component {
         songs: []
     }
     
-    componentDidMount() {
+    componentDidMount() {    
         fetch(SONGSAPI, {
             method: "GET",
             headers: {
-                'Authorization': BEARER,
+                'Authorization': "Bearer " + localStorage.token,
                 'Content-Type':'application/json'
             }
         })
@@ -34,7 +33,7 @@ class Songs extends Component {
         fetch(DELETESONGAPI + id , {
             method: "DELETE",
             headers: {
-                'Authorization': BEARER,
+                'Authorization': "Bearer " + localStorage.token,
                 'Content-Type':'application/json'
             }
         })
